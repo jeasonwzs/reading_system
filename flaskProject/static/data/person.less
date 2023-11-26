@@ -1,0 +1,335 @@
+body {
+  --themeColor  : #2dd1ac;
+  display       : flex;
+  flex-direction: row;
+  height        : 100vh;
+  overflow      : hidden;
+
+  .left_bar {
+    // flex: 3;
+    width           : 15%;
+    background-color: #4e546c;
+    box-sizing      : border-box;
+    padding         : 12vh 0;
+    overflow        : hidden;
+
+    div {
+      width    : 95%;
+      color    : #959fb4;
+      font-size: 1vw;
+      padding  : 2vh 2vw;
+
+      &:hover {
+        color: var(--themeColor);
+      }
+    }
+
+    .active {
+      color           : #ffffff;
+      background-color: var(--themeColor);
+      border-right    : 1px solid var(--themeColor);
+      border-radius   : 20px;
+
+      &:hover {
+        color: #f8f8f8;
+      }
+    }
+  }
+
+  .right_content2 {
+    background   : #e9f2f9;
+    // background: #f6f6f6;
+    width        : 85%;
+    // display      : none;
+    display: flex;
+    color        : #000;
+
+    .left {
+      width        : 75%;
+      // background: #000;
+
+      .leftTop {
+        display : flex;
+        height  : 75%;
+        overflow: hidden;
+
+        .books {
+          background  : #fff;
+          width       : 35%;
+          padding     : 8px 42px;
+          border-right: 4px solid #000;
+
+          .title {
+            font-size: 24px;
+            padding  : 8px 0 4px 16px;
+          }
+
+          .booksWrap {
+            a {
+              height  : 100%;
+              margin  : 16px;
+              position: relative;
+              display : block;
+              cursor  : pointer;
+
+              img {
+                width: 100px;
+
+              }
+
+              span {
+                position  : absolute;
+                bottom    : 10px;
+                left      : 120px;
+                text-align: left;
+                // width:100%;
+                font-size : 18px;
+              }
+            }
+          }
+
+          .more {
+            float: right;
+          }
+        }
+
+        .centerRole {
+          width     : 65%;
+          background: #f6f6f6;
+          text-align: center;
+
+          // margin:0 16px;
+          img {
+            height: 100%;
+          }
+
+        }
+      }
+
+      .studyWay {
+        background-color: #fff;
+        //  margin-top:16px;
+        height          : 25%;
+        padding-left    : 43px;
+        border-top      : 4px solid #000;
+
+        .title {
+          font-size: 24px;
+          padding  : 14px 0 8px 16px;
+        }
+
+        .content {
+          margin   : auto 0;
+          font-size: 16px;
+        }
+      }
+    }
+
+    .rightPerson {
+      background    : #fff;
+      // margin-left: 4px;
+      width         : 25%;
+      border-left   : 4px solid #000;
+
+      .title {
+        font-size: 24px;
+        padding  : 14px 0 0px 16px;
+      }
+
+      .perWrap {
+        // overflow-y: scroll;
+        padding: 4px 12px;
+
+        li {
+          // position:relative;
+          margin          : 16px 32px;
+          display         : flex;
+          align-items     : flex-end;
+          justify-content : space-between;
+          align-items     : baseline;
+          padding         : 12px 20px;
+          margin          : 12px;
+          background-color: #e9f2f9;
+          border-radius   : 10px;
+          box-shadow      : 0 0 10px 0 #f3f3f3;
+
+          img {
+            height        : 64px;
+            vertical-align: baseline;
+          }
+
+          span {
+            display       : inline-block;
+            vertical-align: baseline;
+            font-size     : 14px;
+            text-align    : left;
+          }
+
+          .iconfont {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+
+  .right_book {
+    color  : #121212;
+    width  : 85%;
+    padding: 42px;
+    display: none;
+
+    .iconfont {
+      font-size: 28px;
+      color    : var(--themeColor);
+      float    : right;
+    }
+
+    .fir {
+      display        : flex;
+      justify-content: center;
+      text-align     : left;
+      margin         : 4px 24px;
+
+      img {
+        width : 280px;
+        margin: 12px 24px;
+      }
+
+      .desc {
+        flex        : 1;
+        padding-left: 32px;
+        text-align  : left;
+
+        .title {
+          font-size: 32px;
+        }
+
+        .author {
+          margin   : 24px;
+          font-size: 18px;
+        }
+
+        p {
+          width    : 80%;
+          margin   : 12px;
+          font-size: 16px;
+        }
+      }
+    }
+
+    .pages {
+      height    : 72px;
+      text-align: center;
+      margin    : auto;
+
+      span {
+        width    : 20%;
+        padding  : 12px 24px;
+        font-size: 24px;
+        border   : 2px solid #efe4b0;
+      }
+    }
+
+    .articals {
+      width         : 90%;
+      margin        : auto;
+      font-size     : 14px;
+      letter-spacing: 2px;
+    }
+
+    .searchForMore {
+      float       : right;
+      margin-right: 64px;
+    }
+  }
+
+  .right_per {
+    width  : 85%;
+    display: none;
+
+    .iconfont {
+      font-size: 28px;
+      color    : var(--themeColor);
+      position : fixed;
+      right    : 64px;
+      top      : 34px;
+      width    : 64px;
+      height   : 64px;
+      z-index  : 999;
+    }
+
+    .fir {
+      height         : 55%;
+      width          : 100%;
+      display        : flex;
+      justify-content: center;
+      position       : relative;
+
+      img {
+        height    : 100%;
+        text-align: center;
+      }
+
+      span {
+        position     : absolute;
+        font-size    : 26px;
+        padding      : 8px 32px;
+        box-shadow   : 0 0 20px 0 #efefef;
+        background   : #e9f2f9;
+        color        : #252525;
+        border-radius: 10px;
+      }
+
+      .age {
+        left: 150px;
+        top : 80px;
+      }
+
+      .city {
+        left: 190px;
+        top : 200px;
+      }
+
+      .hasRead {
+        left: 180px;
+        top : 320px;
+      }
+
+      .hobbyRead {
+        right: 190px;
+        top  : 130px;
+      }
+
+      .personality {
+        right: 180px;
+        top  : 300px;
+      }
+    }
+
+    .sec {
+      height : 45%;
+      display: flex;
+
+      .cirPic {
+        width : 33%;
+        height: 100%;
+        scale : 0.9;
+      }
+
+      .zzPic {
+        width : 33%;
+        height: 100%;
+        scale : 0.95;
+      }
+
+      .cyPic {
+        width : 33%;
+        height: 100%;
+        left  : -36px !important;
+        ;
+      }
+    }
+  }
+
+}

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 文学 -->
+    <meta name="description" content="文本分析数据可视化，词性，命名实体，句法分析">
+    <!-- 关键词 -->
+    <meta name="keywords" content="词性，命名实体，句法分析，文本，可视化，图表显示">
+    <title>文本分析数据可视化 - 词性，命名实体，句法分析</title>
+    <!-- logo待设计 -->
+    <!-- <link rel="shortcut icon" href="favicon.ico"> -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="iconfont/iconfont.css">
+
+ 
+    <!-- <script src="js/echarts.min.js "></script> -->
+    <script src='https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js'></script>
+    <script src="js/echarts-wordcloud.min.js"></script>
+    <script src="js/westeros.js "></script>
+    <script src="js/jquery-3.6.0.min.js "></script>
+    <style>
+    
+    </style>
+
+</head>
+
+<body>
+    <!-- 左边 -->
+    <div class="left_bar">
+        <!-- 教育部和真实数据按钮 -->
+        <div class="active">真教</div>
+        <!-- 高年级和低年级按钮 -->
+        <div class="">年级</div>
+        <!-- 主外城区 -->
+        <div class="">地区</div>
+        <!-- 个性化推荐 -->
+        <div class="">个性化推荐</div>
+        <!--个人设置-->
+        <div class="">个人设置</div>
+        
+    </div>
+    <!-- 右边 -->
+    <div class="right_content">
+
+        <header class="header">
+            <div class="search-wrap">
+                <!-- 搜索选择 -->
+                <div class="search-box">
+                    <!-- 默认搜索选择 -->
+                    <div class="search-drop">
+                        <div>
+                            <span class="search-tab-text">词性</span>
+                            <span class="iconfont icon-xiala"></span>
+                        </div>
+
+                        <!-- 下拉选择 -->
+                        <div class="search-dropdown">
+                            <div class="cx">词性</div>
+                            <div class="mmst">命名实体</div>
+                            <div class="jf">句法</div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- 输入选择 -->
+                <!-- <div class="search-input-cover"></div> -->
+                <input type="text" class="search-input" placeholder="请输入想要分析的词语">
+                <!-- 搜索图标 -->
+                <div class="iconfont icon-sousuo"></div>
+
+            </div>
+        </header>
+        <div class="nav">
+            <ul class="item">
+                <li><a href="#">词性表</a></li>
+                <li><a href="#">命名实体</a></li>
+                <li><a href="#">句法</a></li>
+            </ul>
+            </div>
+            <script>
+                $(function(){
+                    $(".item").children("li").click(function(){
+                        $(this).addClass("selected");
+                        $(this).siblings().removeClass("selected");
+                    })
+                    $(".item").children("li").eq(0).click(function(){
+                        $(".content").children(".cx_pic").show();
+                        $(".content").children(".cx_pic").siblings().hide();
+                        $(".content").children(".help_info").show();
+                    })
+                    $(".item").children("li").eq(1).click(function(){
+                        $(".content").children(".mmst_pic").show();
+                        $(".content").children(".mmst_pic").siblings().hide();
+                        $(".content").children(".help_info").show();
+                    })
+                    $(".item").children("li").eq(2).click(function(){
+                        $(".content").children(".jf_pic").show();
+                        $(".content").children(".jf_pic").siblings().hide();
+                        $(".content").children(".help_info").show();
+                    })
+                })
+            </script>
+        <div class="content">
+            <div class="help_info"><span>点击柱状图底部文字可展现对应模块实例</span></div>
+            
+            <!-- 词性表 -->
+            <div class="cx_pic" id="cx_pic"></div>
+
+            <!-- 命名实体 -->
+            <div class="mmst_pic" id="mmst_pic"></div>
+
+            <!-- 句法 -->
+            <div class="jf_pic" id="jf_pic"></div>
+        </div>
+        <div class="shili_container">
+            <div class="subsearch">
+                <input type="text" placeholder="快速查找数据" name="" id="" value="" />
+                <button><i>搜索</i></button>
+            </div>
+            <script>
+                $(function(){
+                    $(".subsearch").children("button").click(function(){
+                        var v = $(".subsearch").children("input").val();
+                        if(v==null)
+                        {
+                            alert("查找输入框不能为空");
+                        }
+                        else
+                        {
+                            $(".subsearch").children("input").val("");
+                            window.location.href="#"+v;
+                        }
+                    })
+                })
+            </script>
+            <a href="#here"><div style='border-radius: 50%; width: 50px; height: 50px; position: fixed; right: 10px; bottom: 10px; background-color: skyblue; box-shadow: 5px 5px 2px #888888; color: white; text-align: center; font-size: 30px; font-weight: bolder;'>↑</div></a><!--返回顶部-->
+            <div class="iconfont icon-back"></div>
+            <div class="title"></div>
+            <table>
+                <thead>
+
+                </thead>
+                <tbody>
+
+                </tbody>
+
+
+            </table>
+
+            <div class="title"></div>
+            <table>
+                <thead>
+
+                </thead>
+                <tbody>
+
+                </tbody>
+
+
+            </table>
+        </div>
+        <div class="search_result_container">
+
+        </div>
+    </div>
+    <!-- 右边个性化推荐 -->
+    <div class="right_content2">
+        <div class="left">
+            <div class="leftTop">
+                <div class="books" style="overflow-y: scroll;overflow-x: scroll;">
+                    <div class="title">
+                        书籍
+                    </div>
+                    <div class="booklist">
+                        <select name="type" id="booktype" style="width: 100%;">
+                            <option value="按国别">按国别</option>
+                            <option value="按年代">按年代</option>
+                        </select>
+                        <ul class="booksWrap" id="booksWrap"></ul><!--根据上面的booktype显示书本-->
+                    </div>
+                    
+                    <!--<a href="#" class="more">更多>></a>-->
+                </div>
+                
+                <div class="centerRole" onclick="showYourself()"></div>
+                <script>
+                    var sex = "男";//获取用户性别
+                    var centerRole = document.querySelector(".centerRole");
+                    centerRole.innerHTML="<div class='systemtitle'>中小学生成长阅读个性化推荐系统</div><img src='image/"+sex+".png' alt=''>";
+                </script>
+                <script>
+                    $(function(){
+                        $(".centerRole").click(function(){
+                            $(".right_per").children(".fir").children("span").hide();
+                            $(".right_per").children(".fir").children("span").eq(0).fadeIn(1000);
+                            $(".right_per").children(".fir").children("span").eq(1).delay(1000);
+                            $(".right_per").children(".fir").children("span").eq(1).fadeIn(1000);
+                            $(".right_per").children(".fir").children("span").eq(2).delay(2000);
+                            $(".right_per").children(".fir").children("span").eq(2).fadeIn(1000);
+                            $(".right_per").children(".fir").children("span").eq(3).delay(3000);
+                            $(".right_per").children(".fir").children("span").eq(3).fadeIn(1000);
+                            $(".right_per").children(".fir").children("span").eq(4).delay(4000);
+                            $(".right_per").children(".fir").children("span").eq(4).fadeIn(1000);
+                            
+                        })
+                    })
+                </script>
+            </div>
+            <div class="studyWay">
+                <div class="title">
+                    学习方法
+                </div>
+                <div class="content">
+                    <p>您平时阅读书目较多，但多为图画书，种类较为单一。为了提高您的文学素养，增强情感智慧，拓宽会和历史视野，我们推荐您：
+                    </p>
+                    <p>1.每天阅读60分钟推荐书目
+                        2.营造一个整洁的学习环境
+                        3.每次阅读后提出感悟并总结笔记</p>
+                </div>
+            </div>
+        </div>
+        <div class="rightPerson" style="overflow-y: scroll;overflow-x: scroll;">
+            <div class="title">学习伙伴</div>
+            <div class="color-button"  onclick="ShowRank()">
+                查看排名
+            </div>
+            
+            <div class="color-button" onclick="Ding()">
+                打卡
+            </div>
+            <ul class="perWrap" id="perWrap">
+                
+                <!--<li>
+                    <img src="image/per1.png" class="stuImg" alt="">
+                    <span class="uname">张三</span>
+                    <span class="icon-plus-circle1"></span>
+                </li>-->
+            
+            </ul>
+            
+        </div>
+        
+    </div>
+    
+    
+
+    <div class="right_book">
+        <div class="iconfont icon-back"></div>
+        <div class="fir">
+            <img src="image/book2.png" alt="活着">
+            <div class="desc">
+                <span class="title">活着</span><span class="author">作者：余华</span>
+                <p>简介：《活着》是中国当代作家余华创作的长篇虚构小说，首次发表于《收获》1992年第6期。 </p>
+                <p>《活着》讲述了在大时代背景下，随着内战、三反五反、大跃进、“文化大革命”等社会变革，徐福贵的人生和家庭不断经受着苦难，到了最后所有亲人都先后离他而去，仅剩下年老的他和一头老牛相依为命。小说以普通、平实的故事情节讲述了在急剧变革的时代中福贵的不幸遭遇和坎坷命运，在冷静的笔触中展现了生命的意义和存在的价值，揭示了命运的无奈，与生活的不可捉摸。
+                </p>
+            </div>
+        </div>
+        <div class="pages">
+            <span>第一章</span><span>第二章</span><span>第三章</span><span>第四章</span><span>第五章</span><span>第六章</span><span>第七章</span><span>第八章</span><span>第九章</span>
+        </div>
+        
+        <div class="articals">
+            一位真正的作家永远只为内心写作，只有内心才会真实地告诉他，他的自私、他的高尚是多么突出。内心让他真实地了解自己，一旦了解了自己也就了解了世界。很多年前我就明白了这个原则，可是要捍卫这个原则必须付出艰辛的劳动和长时期的痛苦，因为内心并非时时刻刻都是敞开的，它更多的时候倒是封闭起来，于是只有写作、不停地写作才能使内心敞开，才能使自己置身于发现之中，就像日出的光芒照亮了黑暗，灵感这时候才会突然来到。
+            长期以来，我的作品都是源于和现实的那一层紧张关系。我沉湎于想象之中，又被现实紧紧控制，我明确感受着自我的分裂，我无法使自己变得纯粹，我曾经希望自己成为一位童话作家，要不就是一位实实在在作品的拥有者，如果我能够成为这两者中的任何一个，我想我内心的痛苦将轻微很多，可是与此同时我的力量也会削弱很多。
+            事实上我只能成为现在这样的作家，我始终为内心的需要而写作，理智代替不了我的写作，正因为此，我在很长一段时间里是一个愤怒和冷漠的作家。
+            这不只是我个人面临的困难，几乎所有优秀的作家都处于和现实的紧张关系中，在他们笔下，只有当现实处于遥远状态时，他们作品中的现实才会闪闪发亮。应该看到，这过去的现实虽然充满了力，可它已经蒙上了一层虚幻的色彩，那里面塞满了个人想象和个人理解。真正的现实，也就是作家生活中的现实，是令人费解和难以相处的。
+        </div>
+        <a href="javascript:;" class="searchForMore"> 查看更多内容 >></a>
+        <script>
+            $(function(){
+                $(".pages span").click(function(){
+                    $(this).addClass("ChapterSelected");
+                    $(this).siblings().removeClass("ChapterSelected");
+                    var t = $(this).index();
+                    t=t+1;
+                    $(".articals").text("第"+t+"章梗概");
+                })
+            })
+        </script>
+    </div>
+
+    <div class="right_per" style="overflow-y: scroll;overflow-x: scroll;">
+        <div class="iconfont icon-back"><span style="font-size: 1px;">返回主页</span></div>
+        
+        <div class="fir">
+            <img class="personimg" src="" alt="">
+            <span class="age">10岁</span>
+            <span class="city">广州</span>
+            <span class="hasRead">已阅读xx小时</span>
+            <span class="hobbyRead">偏好为文学类作品</span>
+            <span class="personality">善良的学生</span>
+        </div>
+        <script>
+            $(function(){
+                $(".personimg").attr("src","image/"+sex+".png");
+            })
+        </script>
+        <div class="sec">
+            <div class="cirPic"></div>
+            <div class="zzPic"></div>
+            <div class="cyPic" id="cyPic"></div>
+        </div>
+    </div>
+    <script src="js/index.js"></script>
+    <script>
+        var t,tp;
+            $(function(){
+                $(".icon-plus-circle1").click(function(){
+                    t = $(this);
+                    tp = $(this).parent("li").index();
+                    t.hide();
+                    addPerson(tp);
+                })
+            });
+            
+    </script>
+</body>
+
+</html>

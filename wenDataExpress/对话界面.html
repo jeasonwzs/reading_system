@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>对话</title>
+    <script src="js/jquery.min.js"></script>
+	<script src="js/jquery-3.6.0.min.js "></script>
+    <style type="text/css">
+        *{
+			margin: 0px;
+			padding: 0;
+		}
+		html {
+		    height: 100%;
+		}
+		body {
+		    height: 100%;
+            display: flex;/*重要*/
+	justify-content: space-between;/*重要*/
+
+		}	
+        .box{
+            width: 69%;
+            height: 100%;
+        }
+        .talk_con{
+            width:100%;
+            height:99%;
+            border:1px solid #666;
+            
+            background:#bde2f7;
+        }
+        .talk_show{
+            width:85%;
+            height:80%;
+            border:1px solid #666;
+            background:#fff;
+            margin:0px 20px 20px 20px;
+            overflow:auto;
+        }
+        .name{
+            width: 100%;
+            height: 4%;
+            background-color: #c3c1c1;
+        }
+        .talk_input{
+            width:90%;
+            height: 19%;
+            margin:0px 0px 0px 0px;
+        }
+        .whotalk{
+            width:80px;
+            height:30px;
+            float:left;
+            outline:none;
+        }
+        .talk_word{
+            width:91%;
+            height:50%;
+            padding:0px;
+            float:left;
+            margin-left:10px;
+            outline:none;
+            text-indent:10px;
+        }        
+        .talk_sub{
+            width:56px;
+            height:50%;
+            float:left;
+            
+        }
+        .atalk{
+           margin:10px; 
+        }
+        .atalk span{
+            display:inline-block;
+            background:#0181cc;
+            border-radius:10px;
+            color:#fff;
+            padding:5px 10px;
+        }
+        .btalk{
+            margin:10px;
+            text-align:right;
+        }
+        .btalk span{
+            display:inline-block;
+            background:#ef8201;
+            border-radius:10px;
+            color:#fff;
+            padding:5px 10px;
+        }
+        .left{
+            width: 30%;
+            height: 100%;
+            overflow-y: scroll;
+            background-color: #bde2f7;
+
+        }
+        .friends{
+            width: 90%;
+            height: 10%;
+            background: #fff;
+            color: #666;
+            font-size: 20px;
+            margin-top: 20px;
+            margin-left: 10px;
+        }
+        .friends_selected{
+            background-color: rgb(66, 244, 184);
+        }
+        .friends img{
+            width: 50%;
+            height: 10%;
+        }
+        
+    </style>
+    <script type="text/javascript">      
+    // 
+        window.onload = function(){
+            var Words = document.getElementById("words");
+            var personList = document.querySelector(".person");
+            var TalkWords = document.getElementById("talkwords");
+            var TalkSub = document.getElementById("talksub");
+            
+            var string1 = "";//一般从个性化推荐那里获取朋友的数据然后将数据传到这里
+            for(var i=0; i<10; i++)//测试，先弄10个
+            {
+                string1 += "<li class='friends'><img src='image/bigPer.png'/>姓名"+i+"</li>";
+            }
+            
+            personList.innerHTML = string1;
+
+
+            TalkSub.onclick = function(){
+	            //定义空字符串
+                var str = "";
+                if(TalkWords.value == ""){
+	                 // 消息为空时弹窗
+                    alert("消息不能为空");
+                    return;
+                }
+                str = '<div class="btalk"><span>' + TalkWords.value +'</span></div>' ;
+                str += '<div class="atalk"><span>在忙，等一下</span></div>';
+                TalkWords.value="";
+                
+                Words.innerHTML = Words.innerHTML + str;
+            }
+            $(function(){
+            
+            $(".friends").click(function(){
+                $(this).addClass("friends_selected");
+                $(this).siblings().removeClass("friends_selected");
+                $(".name").text($(this).text());
+                $(".talk_show").html("<div class='btalk'><span id='bsay'>hi</span></div>");//class=btalk是自己，对话框的展示内容在这里改
+            })
+        });
+        $(".back").click(function(){
+            window.location.href="index.html";
+        })
+            
+        }
+        
+
+    </script>
+</head>
+<body>
+    <div class="left">
+        <div class="back">返回主页</div>
+        <ul class="person" type="none">
+
+        </ul>
+        <script>
+            
+        </script>
+    </div>
+    <div class="box">
+        <div class="talk_con">
+            <div class="name"></div>
+            <div class="talk_show" id="words">
+                <div class="atalk"><span id="asay">吃饭了吗？</span></div>
+                <div class="btalk"><span id="bsay">还没呢，你呢？</span></div>
+            </div>
+            <div class="talk_input">
+                <input type="text" class="talk_word" id="talkwords">
+                <input type="button" value="发送" class="talk_sub" id="talksub">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

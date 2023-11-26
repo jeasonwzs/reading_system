@@ -1,0 +1,14 @@
+@font-face {
+    font-family: '楷体'; /* 重命名字体名 */
+    src: url('simkai.ttf');
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: '手账本'; /* 重命名字体名 */
+    src: url('shaonuxinshishouzhangben.ttf');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  

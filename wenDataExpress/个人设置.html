@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/jquery-3.6.0.min.js "></script>
+	<!--<script src="js/login.js"></script>-->
+	<script src="js/FileSaver.js"></script>
+<style>
+			
+		*{
+			margin: 0px;
+			padding: 0;
+		}
+		html {
+		    height: 100%;
+		}
+		body {
+		    height: 100%;
+
+		}	
+		.center_background{
+			background-image: url("image/背景6.png");
+			background-repeat:no-repeat; 
+			background-position: center center;
+			
+			background-size: cover;
+			width: 100%;
+			height: 230%;
+		}
+		.top{
+			background-image:url("image/loginbg1.png") ;
+			width:100%;
+			color:#000000; 
+			line-height:47px;  text-indent:24px;
+			float:left;		
+			background:url(image/loginbg2.png) repeat-x;
+			position:fixed; 
+			box-shadow:  2px 1px 5px 0.5px #666;
+		}
+		.top_right{
+			float: right;
+			margin-right: 25px;
+			color:#000000;
+			padding-right:1px;
+			text-decoration: none;
+		}
+		
+		.top_right:active{
+			float: right;
+			margin-right: 25px;
+			color:#000000;
+			padding-right:1px;
+			text-decoration: none;
+			opacity: 0.5;
+		}
+		
+			
+			
+		
+			
+		.content1{
+			justify-content: center;
+			position:absolute;left:45px;top:30px;
+			list-style-type: none;
+		}
+		
+		.input_text1{
+			width:299px;
+			height:48px;
+			border:none;
+			line-height:48px; 
+			padding-left:44px; 
+			font-size:14px; 
+			color:#90a2bc;
+			background: url("image/loginuser.png") no-repeat;
+		}
+			
+		.fifth{	
+			width:299px; 
+			height:48px;
+			border:none;
+			line-height:48px; 
+			padding-left:44px; 
+			font-size:14px; 
+			color:#90a2bc;
+			background: url("image/loginpassword.png") no-repeat;
+		}
+			
+		.enter_button{
+			margin-top: 20px;
+			background-color:#b7eeeb;
+			width: 150px;
+			height: 40px;
+			border:none; 
+		}
+			
+		.enter_button:active{
+			background-color:#b7eeeb;
+			width: 150px;
+			height: 40px;
+			border:none; 
+			opacity: 0.5;
+		}
+			
+		
+		.boxs2{
+			width: 100%;
+			height: auto;
+		}
+		.boxs2 li{
+			margin-top: 5px;
+			margin-bottom: 5px;
+			line-height: 50px;
+			float: left;
+		}
+		.boxs1{
+			width: 70px;
+		}
+		.button2{
+			text-align: center;
+		}
+		.fileBox{
+        display:inline-block;
+        width:100%; 
+        height:40px; 
+        background:skyblue; 
+        position:relative;
+        overflow:hidden;
+        cursor: pointer;
+		
+        text-align: center;
+        line-height: 40px;
+        text-decoration: none;
+        color: white;
+        font-size: 14px;
+    }
+    .fileBox:hover{background:rgba(255, 255, 255, 0.342);}
+
+    .fileBox input{
+        position:absolute;
+        left:0; 
+        top:0; 
+        opacity:0; 
+        font-size: 100px;
+        filter:alpha(opacity=0);
+    }
+
+		</style>
+		
+			
+		
+
+	</head>
+	<body >
+		
+		
+			<div class="top">
+				<a >个人设置</a>
+				<a class="top_right" href="index.html">返回主页</a>
+			</div>
+			
+			<div class="center_background">					
+			<div  style="width:1000px; height:1200px;position:absolute;left:550px;top:50px;margin:10px auto 30px; ">
+				
+					<form action="login.js" name="register" method="post">					
+					<ul class="content1">
+				
+					<li><!--头像自己下载，其他数据在控制台有输出-->
+						<img id="cropedBigImg" value='custom' alt="" data-address='' title="" width="100%" height="150px" hidden/>
+						<a href="#" class="fileBox">
+							setting
+						<input type="file" id="chooseImage" name="file" width="100%">
+						</a>
+						
+						
+						
+					</li>
+					<script type="text/javascript">
+						
+				$('#chooseImage').on('change',function(){
+						var filePath = $(this).val(),         //获取到input的value，里面是文件的路径
+							fileFormat = filePath.substring(filePath.lastIndexOf(".")).toLowerCase(),
+							src = window.URL.createObjectURL(this.files[0]); //转成可以在本地预览的格式
+							
+						// 检查是否是图片
+						if( !fileFormat.match(/.png|.jpg|.jpeg/) ) {
+							error_prompt_alert('上传错误,文件格式必须为：png/jpg/jpeg');
+							return;  
+						}
+				
+						$('#cropedBigImg').attr('src',src);
+						$('#cropedBigImg').show();
+				});
+
+			</script>
+					<br />
+					<li>
+						<ul type="none" class="boxs2">
+							<li class="boxs1">姓名：</li>
+							<li><input type="text" name="username" placeholder="username" class="input_text1" value="" id="username"></li>
+						</ul>
+					</li>
+					<br />
+					<li>
+						<ul type="none" class="boxs2">
+							<li class="boxs1">学校：</li>
+							<li><input type="text" name="school" placeholder="school" class="input_text1" value="" id="school"></li>
+						</ul>
+					</li>
+					<br />
+					<li>
+						<ul type="none" class="boxs2">
+							<li class="boxs1">班级：</li>
+							<li><input type="text" name="class" placeholder="class" class="input_text1" value="" id="class"></li>
+						</ul>
+					</li>
+					<br />
+					<li>
+						<ul type="none" class="boxs2">
+							<li class="boxs1">状态：</li>
+							
+								<input type="text" id="status" list="cours" class="input_text1" placeholder="状态" >
+								<datalist id="cours">
+									<option>正常</option>
+									<option>不正常</option>
+								</datalist>
+							
+						</ul>
+					</li>
+					<br />
+					<li>
+						<ul type="none" class="boxs2">
+							<li class="boxs1">收藏本：</li>
+							
+							<select id="book" class="input_text1">  
+								<option value="选项1">选项1</option>  
+								<option value="选项2">选项2</option>  
+							</select>
+							
+						</ul>
+					</li>
+					<br />
+					<li>
+						<ul type="none" class="boxs2">
+							<li class="boxs1">风格：</li>
+							
+							<select id="style" class="input_text1">  
+								<option value="选项1">选项1</option>  
+								<option value="选项2">选项2</option>  
+							</select>
+							
+						</ul>
+					</li>
+					<br />
+					<li>
+						<ul type="none" class="boxs2">
+							<li class="boxs1">字体：</li>
+							
+							<input type="number" id="quantity" style="margin-top: 25px;"  name="quantity" min="1" max="36">px
+							
+							
+						</ul>
+					</li>
+					<br />
+					<li class="button2">
+						<a id="downloadLink" href="" download> <input type="button" class="enter_button" value="保存" onclick="save()"></a>
+					</li>
+
+				</ul>
+			</form>	
+			</div>	 
+			</div></div> 
+			<script>
+				var name = "";
+				var school = "";
+				var class1 = "";
+				var statuw = "";
+				var book = "";
+				var style1 = "";
+				var fontZise = "";
+
+				$(function(){
+					$(".enter_button").click(function(){
+						if($("#username").val()=="") alert("姓名不能为空");
+						name = $("#username").val();
+						console.log(name);
+						if($("#school").val()=="") alert("学校不能为空");
+						school = $("#school").val();
+						console.log(school);
+						if($("#class").val()=="") alert("班级不能为空");
+						class1 = $("#class").val();
+						console.log(class1);
+						if($("#status").val()=="") alert("状态不能为空");
+						status = $("#status").val();
+						console.log(status);
+						book = $("#book").val();
+						console.log(book);
+						style1 = $("#style").val();
+						console.log(style1);
+						fontZise = $("#quantity").val();
+						console.log(fontZise);
+					})
+				})
+				function save()
+				{
+					if(name==""||school==""||class1==""||status=="") return ;
+					var imgElement = document.getElementById('cropedBigImg');  
+					var linkElement = document.getElementById('downloadLink');  
+					var imgUrl = imgElement.src;  
+					linkElement.href = imgUrl;  
+					linkElement.download = ''; 
+				}
+				
+				
+			</script>
+		
+			
+			
+	</body>
+</html>

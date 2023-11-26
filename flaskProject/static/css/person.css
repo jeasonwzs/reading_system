@@ -1,0 +1,267 @@
+body {
+  --themeColor: #2dd1ac;
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  overflow: hidden;
+}
+body .left_bar {
+  width: 15%;
+  background-color: #4e546c;
+  box-sizing: border-box;
+  padding: 12vh 0;
+  overflow: hidden;
+}
+body .left_bar div {
+  width: 95%;
+  color: #959fb4;
+  font-size: 1vw;
+  padding: 2vh 2vw;
+}
+body .left_bar div:hover {
+  color: var(--themeColor);
+}
+body .left_bar .active {
+  color: #ffffff;
+  background-color: var(--themeColor);
+  border-right: 1px solid var(--themeColor);
+  border-radius: 20px;
+}
+body .left_bar .active:hover {
+  color: #f8f8f8;
+}
+body .right_content2 {
+  background: #e9f2f9;
+  width: 85%;
+  display: flex;
+  color: #000;
+}
+body .right_content2 .left {
+  width: 75%;
+}
+body .right_content2 .left .leftTop {
+  display: flex;
+  height: 75%;
+  overflow: hidden;
+}
+body .right_content2 .left .leftTop .books {
+  background: #fff;
+  width: 35%;
+  padding: 8px 42px;
+  border-right: 4px solid #000;
+}
+body .right_content2 .left .leftTop .books .title {
+  font-size: 24px;
+  padding: 8px 0 4px 16px;
+}
+body .right_content2 .left .leftTop .books .booksWrap a {
+  height: 100%;
+  margin: 16px;
+  position: relative;
+  display: block;
+  cursor: pointer;
+}
+body .right_content2 .left .leftTop .books .booksWrap a img {
+  width: 100px;
+}
+body .right_content2 .left .leftTop .books .booksWrap a span {
+  position: absolute;
+  bottom: 10px;
+  left: 120px;
+  text-align: left;
+  font-size: 18px;
+}
+body .right_content2 .left .leftTop .books .more {
+  float: right;
+}
+body .right_content2 .left .leftTop .centerRole {
+  width: 65%;
+  background: #f6f6f6;
+  text-align: center;
+}
+body .right_content2 .left .leftTop .centerRole img {
+  height: 100%;
+}
+body .right_content2 .left .studyWay {
+  background-color: #fff;
+  height: 25%;
+  padding-left: 43px;
+  border-top: 4px solid #000;
+}
+body .right_content2 .left .studyWay .title {
+  font-size: 24px;
+  padding: 14px 0 8px 16px;
+}
+body .right_content2 .left .studyWay .content {
+  margin: auto 0;
+  font-size: 16px;
+}
+body .right_content2 .rightPerson {
+  background: #fff;
+  width: 25%;
+  border-left: 4px solid #000;
+}
+body .right_content2 .rightPerson .title {
+  font-size: 24px;
+  padding: 14px 0 0px 16px;
+}
+body .right_content2 .rightPerson .perWrap {
+  padding: 4px 12px;
+}
+body .right_content2 .rightPerson .perWrap li {
+  margin: 16px 32px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 12px 20px;
+  margin: 12px;
+  background-color: #e9f2f9;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0 #f3f3f3;
+}
+body .right_content2 .rightPerson .perWrap li img {
+  height: 64px;
+  vertical-align: baseline;
+}
+body .right_content2 .rightPerson .perWrap li span {
+  display: inline-block;
+  vertical-align: baseline;
+  font-size: 14px;
+  text-align: left;
+}
+body .right_content2 .rightPerson .perWrap li .iconfont {
+  font-size: 16px;
+}
+body .right_book {
+  color: #121212;
+  width: 85%;
+  padding: 42px;
+  display: none;
+}
+body .right_book .iconfont {
+  font-size: 28px;
+  color: var(--themeColor);
+  float: right;
+}
+body .right_book .fir {
+  display: flex;
+  justify-content: center;
+  text-align: left;
+  margin: 4px 24px;
+}
+body .right_book .fir img {
+  width: 280px;
+  margin: 12px 24px;
+}
+body .right_book .fir .desc {
+  flex: 1;
+  padding-left: 32px;
+  text-align: left;
+}
+body .right_book .fir .desc .title {
+  font-size: 32px;
+}
+body .right_book .fir .desc .author {
+  margin: 24px;
+  font-size: 18px;
+}
+body .right_book .fir .desc p {
+  width: 80%;
+  margin: 12px;
+  font-size: 16px;
+}
+body .right_book .pages {
+  height: 72px;
+  text-align: center;
+  margin: auto;
+}
+body .right_book .pages span {
+  width: 20%;
+  padding: 12px 24px;
+  font-size: 24px;
+  border: 2px solid #efe4b0;
+}
+body .right_book .articals {
+  width: 90%;
+  margin: auto;
+  font-size: 14px;
+  letter-spacing: 2px;
+}
+body .right_book .searchForMore {
+  float: right;
+  margin-right: 64px;
+}
+body .right_per {
+  width: 85%;
+  display: none;
+}
+body .right_per .iconfont {
+  font-size: 28px;
+  color: var(--themeColor);
+  position: fixed;
+  right: 64px;
+  top: 34px;
+  width: 64px;
+  height: 64px;
+  z-index: 999;
+}
+body .right_per .fir {
+  height: 55%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+body .right_per .fir img {
+  height: 100%;
+  text-align: center;
+}
+body .right_per .fir span {
+  position: absolute;
+  font-size: 26px;
+  padding: 8px 32px;
+  box-shadow: 0 0 20px 0 #efefef;
+  background: #e9f2f9;
+  color: #252525;
+  border-radius: 10px;
+}
+body .right_per .fir .age {
+  left: 150px;
+  top: 80px;
+}
+body .right_per .fir .city {
+  left: 190px;
+  top: 200px;
+}
+body .right_per .fir .hasRead {
+  left: 180px;
+  top: 320px;
+}
+body .right_per .fir .hobbyRead {
+  right: 190px;
+  top: 130px;
+}
+body .right_per .fir .personality {
+  right: 180px;
+  top: 300px;
+}
+body .right_per .sec {
+  height: 45%;
+  display: flex;
+}
+body .right_per .sec .cirPic {
+  width: 33%;
+  height: 100%;
+  scale: 0.9;
+}
+body .right_per .sec .zzPic {
+  width: 33%;
+  height: 100%;
+  scale: 0.95;
+}
+body .right_per .sec .cyPic {
+  width: 33%;
+  height: 100%;
+  left: -36px !important;
+}

@@ -1,0 +1,349 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <script src="js/jquery.min.js"></script>
+	<script src="js/jquery-3.6.0.min.js "></script>
+    <title>排名</title>
+    <style>
+        *{
+			margin: 0px;
+			padding: 0;
+		}
+		html {
+		    height: 100%;
+		}
+		body {
+		    height: 100%;
+            
+
+		}	
+        .head{
+            width: 100%;
+            height: 20%;
+            display: flex;/*重要*/
+	justify-content: space-between;/*重要*/
+    background-color: rgb(0, 165, 255);
+        }
+        .selected1{
+            width: 100%;
+            height: auto;
+            justify-content: space-between;/*重要*/
+    background-color: rgb(0, 165, 255);
+        }
+        .selected1 li{
+            margin-left: 20px;
+        }
+        .boxs{
+			width: 100%;
+			height: auto;
+		}
+		.boxs li{
+			margin-top: 5px;
+			margin-bottom: 5px;
+			line-height: 50px;
+			float: left;
+		}
+		.boxs1{
+			width: auto;
+            font-weight: bold;
+		}
+        .input_text{
+            width: 150px;
+            height: 30px;
+        }
+        .table11_6{
+            width: 100%;
+            height: 75%;
+            
+        }
+        .table11_6 table {
+        width:100%;
+        margin:15px 0;
+        border:0;
+    }
+    .table11_6 th {
+        background-color:#96C7ED;
+        color:#000000
+    }
+    .table11_6,.table11_6 th,.table11_6 td {
+        font-size:0.95em;
+        text-align:center;
+        padding:4px;
+        border-collapse:collapse;
+    }
+    .table11_6 th,.table11_6 td {
+        border: 1px solid #73b4e7;
+        border-width:1px 0 1px 0;
+        border:2px inset #ffffff;
+    }
+    .table11_6 tr {
+        border: 1px solid #ffffff;
+    }
+    .table11_6 tr:nth-child(odd){
+        background-color:#dcecf9;
+    }
+    .table11_6 tr:nth-child(even){
+        background-color:#ffffff;
+    }
+    .tile
+    {
+        width: 100%;
+        height: 10%;
+        background-color: #b2b2b2;
+        display: flex;/*重要*/
+	justify-content: space-between;/*重要*/
+    }
+    .num{
+        width: 20px;
+    }
+    /*按钮样式*/
+    .button1{
+        width: 120px;
+        height: 30px;
+        background: skyblue;
+        border: none;
+        color: white;
+        
+        outline: none;
+        box-shadow: -2px 2px  hsl(196, 100%, 30%);
+        margin-left: 20px;
+        margin-top: 10px;
+    }
+    </style>
+
+    
+</head>
+<body>
+    <div class="head">
+        <ul type="none" class="selected1">
+            <li>
+                <ul type="none" class="boxs">
+                    <li class="boxs1">学校：</li>
+                    
+                    <li>
+                        <select id="school" class="input_text">  
+                        <option value="全部">全部</option>  
+                        <option value="学校1">学校1</option> 
+                        <option value="学校2">学校2</option>  
+                        </select>
+                    </li>
+                    
+                </ul>
+            </li>
+            <li>
+                <ul type="none" class="boxs">
+                    <li class="boxs1">标准：</li>
+                    
+                    <li>
+                        <select id="static" class="input_text">  
+                        <option value="按学校">按学校</option>  
+                        <option value="按班级">按班级</option>   
+                        </select>
+                    </li>
+                    
+                </ul>
+            </li>
+            <li>
+                <ul type="none" class="boxs">
+                    <li class="boxs1">顺序：</li>
+                    
+                    <li>
+                        <select id="order" class="input_text">  
+                        <option value="升序">升序</option>  
+                        <option value="降序">降序</option>   
+                        </select>
+                    </li>
+                    
+                </ul>
+            </li>
+            <li>
+                <ul type="none" class="boxs">
+                    <li class="boxs1">状态：</li>
+                    
+                    <li>
+                        <select id="status" class="input_text">  
+                        <option value="全部">全部</option>  
+                        <option value="正常">正常</option>   
+                        <option value="不正常">不正常</option>  
+                        </select>
+                    </li>
+                    
+                </ul>
+            </li>
+            <li>
+                <ul type="none" class="boxs">
+                    <li class="boxs1">班级：</li>
+                    
+                    <li>
+                        <select id="class" class="input_text">  
+                        <option value="全部">全部</option>  
+                        <option value="一班">一班</option>   
+                        <option value="二班">二班</option>  
+                        </select>
+                    </li>
+                    
+                </ul>
+            </li>
+            <li>
+                <ul type="none" class="boxs">
+                    <li class="boxs1">姓名：</li>
+                    
+                    <li>
+                        <input id="name" class="input_text" type="text">
+                    </li>
+                    <li>
+                        <button class="button1">按阅读时长</button>
+                    </li>
+                    <li>
+                        <button class="button1">按打卡次数</button>
+                    </li>
+                    <li>
+                        <button class="button1">返回主页</button>
+                    </li>
+                </ul>
+            </li>
+            
+        </ul>
+    </div>
+    <script>
+        $(function(){
+            $(".button1").eq(0).click(function(){//按阅读时长按钮事件
+                
+            })
+            $(".button1").eq(1).click(function(){//按打卡次数按钮事件
+                
+            })
+            $(".button1").eq(2).click(function(){
+                window.location.href="index.html";
+            })
+        })
+    </script>
+<table class="table11_6"  align="center">
+    
+    <tr>
+        <th align="center" valign="middle">排名</th>
+        <th align="center" valign="middle">学校</th>
+        <th align="center" valign="middle">班级</th>
+        <th align="center" valign="middle">姓名</th>
+    </tr>
+    <tr>
+        <td align="center" valign="middle">1</td>
+        <td align="center" valign="middle">华南师范大学附属中学</td>
+        <td align="center" valign="middle">六年二班</td>
+        <td align="center" valign="middle">张三</td>
+    </tr>
+    <tr>
+        <td align="center" valign="middle"></td>
+        <td align="center" valign="middle"></td>
+        <td align="center" valign="middle"></td>
+        <td align="center" valign="middle"></td>
+    </tr>
+    <tr>
+        <td align="center" valign="middle"></td>
+        <td align="center" valign="middle"></td>
+        <td align="center" valign="middle"></td>
+        <td align="center" valign="middle"></td>
+    </tr>
+    <tr>
+        <td align="center" valign="middle"></td>
+        <td align="center" valign="middle"></td>
+        <td align="center" valign="middle"></td>
+        <td align="center" valign="middle"></td>
+    </tr>
+    
+    
+</table>
+<div class="tile">
+    <div class="page">
+        第
+        <input type="text" class="num">
+        页
+    </div>
+    <div class="fore">上一页</div>
+    <div class="next">下一页</div>
+    <div class="rank">
+        您的排名：16
+    </div>
+</div>
+<script>
+    var pagehead=1;//第一行排名数
+    var pagetile=100;//最大页数，根据排名人数来定
+    var sum = 20;//一页容纳人数
+    var order = 0;//0是升序，1是降序
+    var ul = document.querySelector(".table11_6");
+    var str = "<tr><th align='center' valign='middle'>排名</th><th align='center' valign='middle'>学校</th><th align='center' valign='middle'>班级</th><th align='center' valign='middle'>姓名</th></tr>";
+    for(var i=0; i<sum; i++)
+    {
+
+        str+="<tr><td align='center' valign='middle'></td><td align='center' valign='middle'></td><td align='center' valign='middle'></td><td align='center' valign='middle'></td></tr>";
+    }
+    ul.innerHTML=str;
+    UpdateTable();
+    function UpdateTable()
+    {
+        $(function(){
+            $(".num").val(parseInt(pagehead/sum+1));
+            for(var i=0; i<sum; i++)
+            {
+                if(order==0)
+                {
+                    $(".table11_6 td").eq(i*4).html(pagehead+i);
+                    $(".table11_6 td").eq(i*4+1).html("学校"+(pagehead+i));
+                    $(".table11_6 td").eq(i*4+2).html("班级"+(pagehead+i));
+                    $(".table11_6 td").eq(i*4+3).html("名字"+(pagehead+i));
+                    console.log(i+1);
+                    if(pagehead+i>pagetile)
+                    {
+                        $(".table11_6 td").eq(i*4).html('');
+                        $(".table11_6 td").eq(i*4+1).html('');
+                        $(".table11_6 td").eq(i*4+2).html('');
+                        $(".table11_6 td").eq(i*4+3).html('');
+                    }
+                }
+                else if(order==1)
+                {
+                    $(".table11_6 td").eq(i*4).html(pagetile-i-(pagehead-1));
+                    $(".table11_6 td").eq(i*4+1).html("学校"+(pagetile-i-(pagehead-1)));
+                    $(".table11_6 td").eq(i*4+2).html("班级"+(pagetile-i-(pagehead-1)));
+                    $(".table11_6 td").eq(i*4+3).html("名字"+(pagetile-i-(pagehead-1)));
+                    console.log(i+1);
+                    if(pagehead+i>pagetile)
+                    {
+                        $(".table11_6 td").eq(i*4).html('');
+                        $(".table11_6 td").eq(i*4+1).html('');
+                        $(".table11_6 td").eq(i*4+2).html('');
+                        $(".table11_6 td").eq(i*4+3).html('');
+                    }
+                }
+                
+            }
+        });
+    }
+    $(function(){
+        $(".fore").click(function(){
+            if(pagehead==1) return;
+            pagehead-=sum;
+            UpdateTable();
+        })
+        $(".next").click(function(){
+            if(pagehead+sum>pagetile) return;
+            pagehead=pagehead+sum;
+            UpdateTable();
+        })
+        $(".num").change(function()
+        {
+            pagehead=sum*($(".num").val()-1)+1;
+            UpdateTable();
+        })
+        $("#order").change(function(){
+            if($(this).val()=="升序") order=0;
+            else order=1;
+            UpdateTable();
+        })
+        
+    })
+</script>
+</body>
