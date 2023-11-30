@@ -17,8 +17,25 @@ db_config = {
     "host": "127.0.0.1",
     "user": "root",
     "password": "root",
-    "database": "reading_platform"
+    "database": "reading_platform",
+    # "auth_plugin": "mysql_native_password"  # 添加这一行
 }
+
+try:
+    connection = mysql.connector.connect(**db_config)
+    cursor = connection.cursor()
+    logging.info('数据库连接成功')
+
+    # 其余的数据库操作代码...
+
+except Exception as e:
+    logging.error(f'数据库连接失败，错误信息: {str(e)}')
+    response = {
+        'code': 0,
+        'msg': '查询出错',
+        'data': []
+    }
+
 
 # 个性化界面 -> 书籍推荐
 @app.route('/recommendBook', methods=['GET'])
@@ -142,7 +159,7 @@ def friRecommend():
             # app.logger.debug(result)
 
             if result:
-                data.append({"studentId":result[0],"studentName": result[1]})
+                data.append({"studentId": result[20], "studentName": result[1], "school": result[18], "class": result[19], "sex": result[21], "nation": result[22], "birth": result[23]})
         response = {
             'code':1,
             'msg':'查询成功',

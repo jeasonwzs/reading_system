@@ -283,7 +283,8 @@ function initData() {
                     var firMsg = document.createElement("div");//添加朋友详细信息
                     console.log(fri);
                     firMsg.className="card1";
-                    firMsg.textContent = "学号:"+fri.studentId+"\n 姓名:"+fri.studentName+"\n";
+                    // firMsg.textContent = "学号:"+fri.studentId+"\n 姓名:"+fri.studentName+"\n";
+                    firMsg.textContent = "学号:"+fri.studentId+"\n 姓名:"+fri.studentName+"\n 学校:"+fri.school+"\n 班级:"+fri.class+"\n 性别:"+fri.sex+"\n 民族:"+fri.nation+"\n 出生年月:"+fri.birth+"\n";
                     div.appendChild(img);
                     div.appendChild(span);
                     div.appendChild(span1);
@@ -438,6 +439,24 @@ function changeTab(index) {
     } else if(index==3){
         rightCon1.style.display = 'none'
         rightCon2.style.display = 'flex'
+        var aa = document.querySelectorAll(".bookTitle");
+        var maxheight = parseInt(0);
+        var maxwidth = parseInt(0);
+        aa.forEach(element => {
+            console.log("name:"+element.text+"width:"+element.offsetWidth+",height:"+element.offsetHeight);
+            if(maxheight<=element.offsetHeight) maxheight = element.offsetHeight;
+            if(maxwidth<=element.offsetWidth) maxwidth = element.offsetWidth;
+        });
+        var booktitle = document.querySelectorAll(".bookTitle");
+        if(maxheight<maxwidth) maxheight = maxwidth
+        booktitle.forEach(element => {
+
+            element.style.height=maxheight+"px";
+            //if(getComputedStyle(element).height<=maxwidth) element.style.height = maxwidth;
+
+            element.style.width= maxwidth+"px";
+            //console.log("width:"+getComputedStyle(element).width+",height:"+getComputedStyle(element).height);
+        });
     }
     else if(index==4)
     {
@@ -1111,7 +1130,7 @@ function getPerEchart() {
                     type: 'category',
                     splitLine: { show: false },
                     data: ['0-4', '4-8', '8-12'],
-                    name: '小时'
+                    name: '月份'
                 },
                 yAxis: {
                     type: 'value',
@@ -1255,27 +1274,60 @@ function getPerEchart() {
 
 }
 
+function findMaxIndex(arr) {
+    return arr.reduce(function (maxIndex, currentValue, currentIndex, array) {
+        return currentValue > array[maxIndex] ? currentIndex : maxIndex;
+    }, 0);
+}
+
 //词云库
 function CY(item1)//词云库的关键字在这里改
 {
    var data = [
-        { name: "无关键字", value: item1[0], },
-        { name: "平静、放松", value: item1[1], },
-        { name: "社交能力较强", value: item1[2], },
-        { name: "心理比较健康", value: item1[3], },
-        { name: "全面发展", value: item1[4], },
-        { name: "善于学习", value: item1[5], },
+        // { name: "无关键字", value: item1[0], },
+        { name: "心理健康", value: item1[1], },
+        { name: "社交状况", value: item1[2], },
+        { name: "情绪状态", value: item1[3], },
+        { name: "学习能力", value: item1[4], },
+        { name: "品格素养", value: item1[5], },
     ];
     if(item1.length>0)
     {
-            console.log("item:"+item1[0]);
+        var arr = [item1[1], item1[2], item1[3], item1[4], item1[5]]
+        console.log(arr)
+        var maxIndex = findMaxIndex(arr);
+        console.log(maxIndex)
+
+        console.log("item:"+item1[0]);
+
+        personality_span = document.getElementsByClassName('personality')[0]
+        if(maxIndex == 0) {
+            personality_span.textContent = '心灵使者';
+        }
+        else if(maxIndex == 1) {
+            personality_span.textContent = '社交小能手';
+        }
+        else if(maxIndex == 2) {
+            personality_span.textContent = '情感阳光使者';
+        }
+        else if(maxIndex == 3) {
+            personality_span.textContent = '学业达才';
+        }
+        else if(maxIndex == 4) {
+            personality_span.textContent = '道德模范';
+        }
         
         const cyPic = document.querySelector('.cyPic')
-        var cyChart = echarts.init(cyPic);
+        var cyChart = echarts.init(cyPic, 'westeros');
         console.log("cy:"+cyChart);
         var w = cyPic.width;
         var h = cyPic.height;
         var cyOption = {
+            title: {
+                    text: '人格词云图',
+                    left: 'center'
+                },
+
             tooltip: {},
             grid: {
                 left: '10%',

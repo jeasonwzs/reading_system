@@ -18,7 +18,7 @@ from keras import Model
 from tensorflow.python.ops import math_ops
 from tensorflow.python.ops import summary_ops_v2
 
-from sentence_transformers import SentenceTransformer, models
+# from sentence_transformers import SentenceTransformer, models
 
 
 #  需要替换成自己的本地路径
